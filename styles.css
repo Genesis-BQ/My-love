@@ -315,3 +315,21 @@ body {
     }
 }
 
+@media (max-width: 780px) {
+    .card-face {
+        padding: 10px; /* Más estrecho en móvil */
+    }
+
+    .title,
+    .message,
+    .date,
+    .signature {
+        text-align: center; /* Centra todos los textos */
+        margin: 5px 0;
+    }
+
+    .card-back {
+        flex-direction: column; /* Acomoda verticalmente */
+        align-items: center;
+    }
+}
