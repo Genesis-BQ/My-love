@@ -1,0 +1,317 @@
+/* Estilos base */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #0a1a3a, #1a3a6a);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Contenedor de nubes */
+#clouds-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Estilos de nubes mejoradas */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.9;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    animation: float linear infinite;
+    z-index: 1;
+}
+
+.cloud:before, .cloud:after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+}
+
+/* Nube grande */
+.cloud-large {
+    width: 180px;
+    height: 60px;
+}
+
+.cloud-large:before {
+    width: 90px;
+    height: 90px;
+    top: -50px;
+    left: 30px;
+}
+
+.cloud-large:after {
+    width: 70px;
+    height: 70px;
+    top: -30px;
+    right: 30px;
+}
+
+/* Nube mediana */
+.cloud-medium {
+    width: 120px;
+    height: 40px;
+}
+
+.cloud-medium:before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 20px;
+}
+
+.cloud-medium:after {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    right: 20px;
+}
+
+/* Nube pequeña */
+.cloud-small {
+    width: 80px;
+    height: 30px;
+}
+
+.cloud-small:before {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 15px;
+}
+
+/* Contenedor de corazones */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Estilos de corazones */
+.heart-floating {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff6b8b;
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: float-heart 10s linear infinite;
+    z-index: 2;
+}
+
+.heart-floating:before, .heart-floating:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart-floating:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart-floating:after {
+    top: 0;
+    left: -10px;
+}
+
+/* Estilos de la tarjeta */
+.scene {
+    width: 320px;
+    height: 500px;
+    position: relative;
+    perspective: 2000px;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    transform-origin: left center;
+}
+
+.card.open {
+    transform: translateX(160px) rotateY(-180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.front {
+    background: #ff4d4d;
+    border: 10px solid #ff9999;
+    color: white;
+}
+
+.back {
+    background: #fff5f5;
+    transform: rotateY(180deg);
+    padding: 40px;
+    border: 1px solid #ffcccc;
+}
+
+.heart-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+}
+
+.heart {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.heart:before, .heart:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -50px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -50px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    font-size: 9px;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    width: 100%;
+    font-style: italic;
+}
+
+.message p {
+    margin-bottom: 5px;
+}
+
+.date {
+    font-size: 12px;
+    margin: 20px 0;
+    font-style: italic;
+    align-self: flex-end;
+}
+
+.signature {
+    font-style: italic;
+    margin-top: 10px;
+    align-self: flex-end;
+    font-size: 9px;
+}
+
+.emoji {
+    font-size: 16px;
+}
+
+/* Animaciones */
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(100vw) translateY(-20vh);
+    }
+}
+
+@keyframes float-heart {
+    0% {
+        transform: rotate(45deg) translateY(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: rotate(45deg) translateY(-100vh) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .card-face {
+        padding: 10px; /* Más estrecho en móvil */
+    }
+
+    .title,
+    .message,
+    .date,
+    .signature {
+        text-align: center; /* Centra todos los textos */
+        margin: 5px 0;
+    }
+
+    .card-back {
+        flex-direction: column; /* Acomoda verticalmente */
+        align-items: center;
+    }
+}
+

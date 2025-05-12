@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #0a1a3a, #1a3a6a);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Contenedores */
+#clouds-container, #hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Nubes con forma más realista */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.9;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    animation: float linear infinite;
+}
+
+/* Nube grande */
+.cloud-large {
+    width: 180px;
+    height: 60px;
+}
+
+.cloud-large:before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    top: -35px;
+    left: 20px;
+}
+
+.cloud-large:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    top: -20px;
+    right: 20px;
+}
+
+/* Nube mediana */
+.cloud-medium {
+    width: 140px;
+    height: 50px;
+}
+
+.cloud-medium:before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    top: -30px;
+    left: 15px;
+}
+
+.cloud-medium:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    top: -15px;
+    right: 15px;
+}
+
+/* Nube pequeña */
+.cloud-small {
+    width: 100px;
+    height: 40px;
+}
+
+.cloud-small:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    top: -20px;
+    left: 10px;
+}
+
+/* Corazones */
+.heart-floating {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff6b8b;
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: float-heart linear infinite;
+    z-index: 2;
+}
+
+.heart-floating:before, .heart-floating:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart-floating:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart-floating:after {
+    top: 0;
+    left: -10px;
+}
+
+/* Botón de nube */
+.btn-container {
+    position: relative;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cloud-btn {
+    position: relative;
+    background: white;
+    width: 220px;
+    height: 120px;
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3a4a6d;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    z-index: 20;
+}
+
+.cloud-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cloud-btn:before, .cloud-btn:after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud-btn:before {
+    width: 80px;
+    height: 80px;
+    top: -35px;
+    left: 25px;
+}
+
+.cloud-btn:after {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    right: 25px;
+}
+
+.instruction {
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.cloud-btn:hover + .instruction {
+    opacity: 1;
+}
+
+/* Animaciones */
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(100vw) translateY(-20vh);
+    }
+}
+
+@keyframes float-heart {
+    0% {
+        transform: rotate(45deg) translateY(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: rotate(45deg) translateY(-100vh) scale(1);
+        opacity: 0;
+    }
+}
